@@ -1,4 +1,3 @@
-// Theme constants
 export const THEMES = {
   LIGHT: 'light',
   DARK: 'dark',
@@ -7,10 +6,8 @@ export const THEMES = {
 
 export const THEME_LIST = Object.values(THEMES);
 
-// Audio constants
 export const AUDIO_EXTENSIONS = ['.mp3', '.wav', '.ogg', '.m4a', '.flac'];
 
-// Theme styling
 export const THEME_CLASSES = {
   light: {
     bg: 'bg-gradient-to-br from-gray-50 to-gray-100',

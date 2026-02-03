@@ -1,10 +1,6 @@
 import { useState, useCallback } from 'react';
 import { isAudioFile, sortByName } from '../utils/helpers';
 
-/**
- * Hook to manage music library navigation and state
- * @returns {Object} Music state and functions
- */
 export const useMusic = () => {
   const [directory, setDirectory] = useState(null);
   const [artists, setArtists] = useState([]);
@@ -13,16 +9,6 @@ export const useMusic = () => {
   const [selectedAlbum, setSelectedAlbum] = useState(null);
   const [tracks, setTracks] = useState([]);
   const [currentTrack, setCurrentTrack] = useState(null);
-
-  const selectDirectory = useCallback(async () => {
-    try {
-      const dirHandle = await window.showDirectoryPicker();
-      setDirectory(dirHandle);
-      await scanDirectory(dirHandle);
-    } catch (err) {
-      console.error('Error selecting directory:', err);
-    }
-  }, []);
 
   const scanDirectory = useCallback(async (dirHandle) => {
     const artistList = [];
@@ -37,6 +23,16 @@ export const useMusic = () => {
       console.error('Error scanning directory:', err);
     }
   }, []);
+
+  const selectDirectory = useCallback(async () => {
+    try {
+      const dirHandle = await window.showDirectoryPicker();
+      setDirectory(dirHandle);
+      await scanDirectory(dirHandle);
+    } catch (err) {
+      console.error('Error selecting directory:', err);
+    }
+  }, [scanDirectory]);
 
   const loadArtistAlbums = useCallback(async (artistHandle) => {
     const albumList = [];

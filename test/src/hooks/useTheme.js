@@ -1,10 +1,6 @@
 import { useState, useCallback } from 'react';
 import { THEME_LIST } from '../utils/constants';
 
-/**
- * Hook to manage theme state
- * @returns {Object} Theme state and setter
- */
 export const useTheme = () => {
   const [theme, setTheme] = useState('dark');
 

@@ -9,24 +9,10 @@ import { useAudio } from './hooks/useAudio';
 import { useMusic } from './hooks/useMusic';
 import { THEME_CLASSES } from './utils/constants';
 
-/**
- * MusicPlayer - Main component
- * Features:
- * - Directory browsing with File System API
- * - Theme switching (light/dark/amoled)
- * - Audio playback control
- * - Artist/Album/Track navigation
- * - Responsive grid layout
- *
- * @returns {JSX.Element}
- */
 const MusicPlayer = () => {
-  // Theme management
   const { theme, cycleTheme } = useTheme();
 
-  // Music library management
   const {
-    directory,
     artists,
     selectedArtist,
     albums,
@@ -41,7 +27,6 @@ const MusicPlayer = () => {
     resetAlbumSelection,
   } = useMusic();
 
-  // Audio playback management
   const {
     audioRef,
     isPlaying,
@@ -53,10 +38,6 @@ const MusicPlayer = () => {
     setAudioVolume,
   } = useAudio(() => skipTrack('next'));
 
-  /**
-   * Play a track
-   * @param {Object} track - Track object with handle
-   */
   const playTrack = useCallback(
     async (track) => {
       try {
@@ -75,10 +56,6 @@ const MusicPlayer = () => {
     [audioRef, setCurrentTrack]
   );
 
-  /**
-   * Skip to next or previous track
-   * @param {string} direction - 'next' or 'prev'
-   */
   const skipTrack = useCallback(
     (direction) => {
       if (!currentTrack) return;
@@ -94,10 +71,8 @@ const MusicPlayer = () => {
     [currentTrack, tracks, playTrack]
   );
 
-  // Get theme classes
   const themeClass = THEME_CLASSES[theme];
 
-  // Render appropriate content view
   const renderContent = () => {
     if (artists.length === 0) {
       return <EmptyState theme={theme} />;
@@ -140,7 +115,7 @@ const MusicPlayer = () => {
 
   return (
     <div
-      className={`min-h-screen flex flex-col font-sans transition-all duration-300 ${themeClass.bg} ${themeClass.text}`}
+      className={`min-h-screen flex flex-col font-sans transition-all duration-500 ${themeClass.bg} ${themeClass.text}`}
     >
       {/* Main Layout */}
       <div className="flex flex-1 overflow-hidden">
@@ -151,11 +126,13 @@ const MusicPlayer = () => {
           onSelectDirectory={selectDirectory}
         />
 
-        {/* Content Area */}
-        <div className="flex-1 overflow-y-auto">
-          <div className="p-8 max-w-7xl mx-auto">
-            <Header theme={theme} />
-            {renderContent()}
+        {/* Content Area - Centered */}
+        <div className="flex-1 overflow-y-auto flex flex-col">
+          <div className="flex-1 flex items-center justify-center p-8">
+            <div className="w-full max-w-6xl">
+              <Header theme={theme} />
+              {renderContent()}
+            </div>
           </div>
         </div>
       </div>

@@ -1,9 +1,5 @@
 import { useRef, useEffect, useCallback, useState } from 'react';
 
-/**
- * Hook to manage audio playback
- * @returns {Object} Audio state and functions
- */
 export const useAudio = (onTrackEnd) => {
   const audioRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);

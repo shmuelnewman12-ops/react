@@ -2,14 +2,6 @@ import React from 'react';
 import { Music } from 'lucide-react';
 import Card from './Card';
 
-/**
- * Albums Grid Component
- * @param {Object} props - Component props
- * @param {string} props.theme - Current theme
- * @param {Array} props.albums - Array of album objects
- * @param {Function} props.onAlbumSelect - Album selection callback
- * @returns {JSX.Element}
- */
 const AlbumsGrid = ({ theme, albums, onAlbumSelect }) => {
   return (
     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6">
