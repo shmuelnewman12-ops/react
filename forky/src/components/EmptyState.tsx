@@ -21,8 +21,8 @@ export const EmptyState: React.FC<EmptyStateProps> = ({ theme }) => {
         <div className="absolute inset-0 bg-gradient-to-r from-violet-500 to-purple-500 blur-2xl opacity-30 animate-pulse"></div>
         <Music size={80} className="relative text-violet-500" />
       </div>
-      <h2 className="text-3xl font-bold mb-3">No Music Folder Selected</h2>
-      <p className="text-gray-500">Click the folder icon to browse your music library</p>
+      <h2 className="text-3xl font-bold mb-3">FILBERT is lonley</h2>
+      <p className="text-gray-500">browse your music library</p>
     </div>
   );
 };
