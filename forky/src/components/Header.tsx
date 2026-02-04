@@ -20,7 +20,7 @@ export const Header: React.FC<HeaderProps> = ({ theme }) => {
         forky
       </h1>
       <p className="text-center text-sm mt-2 text-gray-500">
-        Your Music, Your Style, Your Way
+        musicy
       </p>
     </div>
   );
